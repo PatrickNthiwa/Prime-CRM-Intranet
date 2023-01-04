@@ -3,18 +3,18 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <!-- Sidebar user panel -->
-        <div class="user-panel">
-            <div class="pull-left image">
-                @if(\Auth::user()->image != null)
-                    <img src="{{ url('uploads/users/' . \Auth::user()->image) }}" class="img-circle" alt="User Image">
-                @else
-                    <img src="{{ url('theme/dist/img/image_placeholder.png') }}" class="img-circle" alt="User Image">
-                @endif
-            </div>
-            <div class="pull-left info">
-                <p>{{ \Auth::user()->name }}</p>
-            </div>
-        </div>
+{{--        <div class="user-panel">--}}
+{{--            <div class="pull-left image">--}}
+{{--                @if(\Auth::user()->image != null)--}}
+{{--                    <img src="{{ url('uploads/users/' . \Auth::user()->image) }}" class="img-circle" alt="User Image">--}}
+{{--                @else--}}
+{{--                    <img src="{{ url('theme/dist/img/image_placeholder.png') }}" class="img-circle" alt="User Image">--}}
+{{--                @endif--}}
+{{--            </div>--}}
+{{--            <div class="pull-left info">--}}
+{{--                <p>{{ \Auth::user()->name }}</p>--}}
+{{--            </div>--}}
+{{--        </div>--}}
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN NAVIGATION</li>
@@ -27,7 +27,7 @@
             @if(user_can('list_contacts'))
                 <li class="treeview {{ Request::segment(2) == 'contacts'? 'active':'' }}">
                     <a href="#">
-                        <i class="fa fa-address-card"></i> <span>Accounts</span>
+                        <i class="fa fa-address-card"></i> <span>Contacts</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
@@ -111,7 +111,7 @@
             @if(\Auth::user()->is_admin == 1)
                 <li class="{{ in_array(Request::segment(2), ['users', 'permissions', 'roles'])?"active":"" }} treeview">
                     <a href="#">
-                        <i class="fa fa-users"></i> <span>User Managment</span>
+                        <i class="fa fa-users"></i> <span>User Management</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>

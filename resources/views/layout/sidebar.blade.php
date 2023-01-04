@@ -27,7 +27,7 @@
             @if(user_can('list_contacts'))
                 <li class="treeview {{ Request::segment(2) == 'contacts'? 'active':'' }}">
                     <a href="#">
-                        <i class="fa fa-address-card"></i> <span>Contacts</span>
+                        <i class="fa fa-address-card"></i> <span>Accounts</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
@@ -68,10 +68,50 @@
                 </li>
             @endif
 
+            @if(user_can('list_emails') || user_can('compose_email'))
+                <li class="treeview {{ Request::segment(2) == 'mailbox' || strpos(Request::segment(2), "mailbox")!==FALSE? 'active':'' }}">
+                    <a href="#">
+                        <i class="fa fa-envelope"></i> <span>Mailbox</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        @if(user_can('list_emails'))
+                            <li class="{{ Request::segment(2) == "mailbox" || Request::segment(3)=="" || Request::segment(3)=="Inbox"?"active":"" }}">
+                                <a href="{{ url('/admin/mailbox') }}">
+                                    Inbox
+                                    @if(count(getUnreadMessages()) > 0)
+                                        <span class="pull-right-container">
+                                            <span class="label label-primary pull-right">{{count(getUnreadMessages())}}</span>
+                                        </span>
+                                    @endif
+                                </a>
+                            </li>
+                        @endif
+                        @if(user_can('compose_email'))
+                            <li class="{{ Request::segment(2) == "mailbox-create"?"active":"" }}">
+                                <a href="{{ url('/admin/mailbox-create') }}">
+                                    Compose
+                                </a>
+                            </li>
+                        @endif
+                    </ul>
+                </li>
+            @endif
+
+            @if(user_can('show_calendar'))
+                <li class="{{ Request::segment(2) == "calendar"?"active":"" }}">
+                    <a href="{{ url('/admin/calendar') }}">
+                        <i class="fa fa-calendar"></i> <span>Calendar</span>
+                    </a>
+                </li>
+            @endif
+
             @if(\Auth::user()->is_admin == 1)
                 <li class="{{ in_array(Request::segment(2), ['users', 'permissions', 'roles'])?"active":"" }} treeview">
                     <a href="#">
-                        <i class="fa fa-users"></i> <span>Settings</span>
+                        <i class="fa fa-users"></i> <span>User Managment</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>

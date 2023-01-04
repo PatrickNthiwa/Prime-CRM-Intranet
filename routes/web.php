@@ -82,6 +82,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::get('/mailbox-send/{id}', '\App\Http\Controllers\MailboxController@send');
 
+    Route::get('/calendar', '\App\Http\Controllers\CalendarController@index');
+
     Route::get('/forbidden', function () {
         return view('pages.forbidden.forbidden_area');
     });

@@ -27,7 +27,7 @@
             @if(user_can('list_contacts'))
                 <li class="treeview {{ Request::segment(2) == 'contacts'? 'active':'' }}">
                     <a href="#">
-                        <i class="fa fa-address-card"></i> <span>Accounts</span>
+                        <i class="fa fa-address-card"></i> <span>Contacts</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
@@ -71,7 +71,7 @@
             @if(\Auth::user()->is_admin == 1)
                 <li class="{{ in_array(Request::segment(2), ['users', 'permissions', 'roles'])?"active":"" }} treeview">
                     <a href="#">
-                        <i class="fa fa-users"></i> <span>User Managment</span>
+                        <i class="fa fa-users"></i> <span>Settings</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>

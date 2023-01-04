@@ -2,7 +2,7 @@
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
-    <title>CRM @yield('title')</title>
+    <title> Prime @yield('title')</title>
     <meta name="csrf_token" content="{{ csrf_token() }}" />
     @include('layout.styles')
     <script>

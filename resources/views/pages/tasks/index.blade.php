@@ -48,7 +48,7 @@
                                     @if(\Auth::user()->is_admin == 1)
                                         <th>#</th>
                                     @endif
-                                    <th>Name</th>
+                                    <th>Task Name</th>
                                     <th>Priority</th>
                                     <th>Status</th>
                                     @if(\Auth::user()->is_admin == 1)

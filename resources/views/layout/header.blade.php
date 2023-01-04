@@ -4,7 +4,7 @@
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>P</b>CRM</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Prime</b>CRM</span>
+        <span class="logo-lg"><b>Prime </b>CRM</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -22,7 +22,7 @@
                         <span class="label label-success">4</span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">You have 4 messages</li>
+                        <li class="header">You have 5 messages</li>
                         <li>
                             <!-- inner menu: contains the actual data -->
                             <ul class="menu">
@@ -35,7 +35,7 @@
                                             Support Team
                                             <small><i class="fa fa-clock-o"></i> 5 mins</small>
                                         </h4>
-                                        <p>Why not buy a new awesome theme?</p>
+                                        <p>Why not buy a property today?</p>
                                     </a>
                                 </li>
                                 <!-- end message -->
@@ -45,10 +45,10 @@
                                             <img src="{{ url('theme') . '/dist/' }}/img/user3-128x128.jpg" class="img-circle" alt="User Image">
                                         </div>
                                         <h4>
-                                            AdminLTE Design Team
+                                            Umoja Magharibi Team
                                             <small><i class="fa fa-clock-o"></i> 2 hours</small>
                                         </h4>
-                                        <p>Why not buy a new awesome theme?</p>
+                                        <p>Find more abut umoja magharibi ...</p>
                                     </a>
                                 </li>
                                 <li>
@@ -60,7 +60,7 @@
                                             Developers
                                             <small><i class="fa fa-clock-o"></i> Today</small>
                                         </h4>
-                                        <p>Why not buy a new awesome theme?</p>
+                                        <p>Manage your Finances using Loanspur System!</p>
                                     </a>
                                 </li>
                                 <li>
@@ -72,7 +72,7 @@
                                             Sales Department
                                             <small><i class="fa fa-clock-o"></i> Yesterday</small>
                                         </h4>
-                                        <p>Why not buy a new awesome theme?</p>
+                                        <p>Why not even lets us take care of your house agenda?</p>
                                     </a>
                                 </li>
                                 <li>
@@ -81,10 +81,10 @@
                                             <img src="{{ url('theme') . '/dist/' }}/img/user4-128x128.jpg" class="img-circle" alt="User Image">
                                         </div>
                                         <h4>
-                                            Reviewers
+                                            CEO
                                             <small><i class="fa fa-clock-o"></i> 2 days</small>
                                         </h4>
-                                        <p>Why not buy a new awesome theme?</p>
+                                        <p>Why we are the Best?</p>
                                     </a>
                                 </li>
                             </ul>
@@ -92,7 +92,7 @@
                         <li class="footer"><a href="#">See All Messages</a></li>
                     </ul>
                 </li>
-                
+
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">

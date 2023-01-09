@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 
+use App\Models\User;
 use Illuminate\Contracts\Mail\Mailer;
 
 class MailerFactory
@@ -35,16 +36,17 @@ class MailerFactory
     public function sendActivateBannedEmail($subject, $user)
     {
         try {
-        $this->mailer->send("emails.activate_banned", ['user' => $user, 'subject' => $subject], function($message) use ($subject, $user) {
+            $this->mailer->send("emails.activate_banned", ['user' => $user, 'subject' => $subject], function ($message) use ($subject, $user) {
 
-            $message->from($this->fromAddress, $this->fromName)
-                ->to($user->email)->subject($subject);
+                $message->from($this->fromAddress, $this->fromName)
+                    ->to($user->email)->subject($subject);
 
-        });
+            });
         } catch (\Exception $ex) {
             die("Mailer Factory error: " . $ex->getMessage());
         }
     }
+
     /**
      * sendUpdateRoleEmail
      *
@@ -55,7 +57,7 @@ class MailerFactory
     public function sendUpdateRoleEmail($subject, $user)
     {
         try {
-            $this->mailer->send("emails.update_role", ['user' => $user, 'subject' => $subject], function($message) use ($subject, $user) {
+            $this->mailer->send("emails.update_role", ['user' => $user, 'subject' => $subject], function ($message) use ($subject, $user) {
 
                 $message->from($this->fromAddress, $this->fromName)
                     ->to($user->email)->subject($subject);
@@ -66,10 +68,11 @@ class MailerFactory
             die("Mailer Factory error: " . $ex->getMessage());
         }
     }
+
     public function sendAssignDocumentEmail($subject, $user, $document)
     {
         try {
-            $this->mailer->send("emails.assign_document", ['user' => $user, 'document' => $document, 'subject' => $subject], function($message) use ($subject, $user) {
+            $this->mailer->send("emails.assign_document", ['user' => $user, 'document' => $document, 'subject' => $subject], function ($message) use ($subject, $user) {
                 $message->from($this->fromAddress, $this->fromName)
                     ->to($user->email)->subject($subject);
             });
@@ -89,7 +92,7 @@ class MailerFactory
     public function sendAssignContactEmail($subject, $user, $contact)
     {
         try {
-            $this->mailer->send("emails.assign_contact", ['user' => $user, 'contact' => $contact, 'subject' => $subject], function($message) use ($subject, $user) {
+            $this->mailer->send("emails.assign_contact", ['user' => $user, 'contact' => $contact, 'subject' => $subject], function ($message) use ($subject, $user) {
                 $message->from($this->fromAddress, $this->fromName)
                     ->to($user->email)->subject($subject);
             });
@@ -97,6 +100,7 @@ class MailerFactory
             die("Mailer Factory error: " . $ex->getMessage());
         }
     }
+
     /**
      * send Update Contact Email
      *
@@ -108,7 +112,7 @@ class MailerFactory
     public function sendUpdateContactEmail($subject, $user, $contact)
     {
         try {
-            $this->mailer->send("emails.update_contact", ['user' => $user, 'contact' => $contact, 'subject' => $subject], function($message) use ($subject, $user) {
+            $this->mailer->send("emails.update_contact", ['user' => $user, 'contact' => $contact, 'subject' => $subject], function ($message) use ($subject, $user) {
                 $message->from($this->fromAddress, $this->fromName)
                     ->to($user->email)->subject($subject);
             });
@@ -116,6 +120,7 @@ class MailerFactory
             die("Mailer Factory error: " . $ex->getMessage());
         }
     }
+
     /**
      * send Delete Contact Email
      *
@@ -127,7 +132,7 @@ class MailerFactory
     public function sendDeleteContactEmail($subject, $user, $contact)
     {
         try {
-            $this->mailer->send("emails.delete_contact", ['user' => $user, 'contact' => $contact, 'subject' => $subject], function($message) use ($subject, $user) {
+            $this->mailer->send("emails.delete_contact", ['user' => $user, 'contact' => $contact, 'subject' => $subject], function ($message) use ($subject, $user) {
                 $message->from($this->fromAddress, $this->fromName)
                     ->to($user->email)->subject($subject);
             });
@@ -135,6 +140,7 @@ class MailerFactory
             die("Mailer Factory error: " . $ex->getMessage());
         }
     }
+
     /**
      * send Assign Task Email
      *
@@ -146,7 +152,7 @@ class MailerFactory
     public function sendAssignTaskEmail($subject, $user, $task)
     {
         try {
-            $this->mailer->send("emails.assign_task", ['user' => $user, 'task' => $task, 'subject' => $subject], function($message) use ($subject, $user) {
+            $this->mailer->send("emails.assign_task", ['user' => $user, 'task' => $task, 'subject' => $subject], function ($message) use ($subject, $user) {
 
                 $message->from($this->fromAddress, $this->fromName)
                     ->to($user->email)->subject($subject);
@@ -169,7 +175,7 @@ class MailerFactory
     public function sendUpdateTaskStatusEmail($subject, $user, $task)
     {
         try {
-            $this->mailer->send("emails.update_task_status", ['user' => $user, 'task' => $task, 'subject' => $subject], function($message) use ($subject, $user) {
+            $this->mailer->send("emails.update_task_status", ['user' => $user, 'task' => $task, 'subject' => $subject], function ($message) use ($subject, $user) {
 
                 $message->from($this->fromAddress, $this->fromName)
                     ->to($user->email)->subject($subject);
@@ -192,7 +198,7 @@ class MailerFactory
     public function sendDeleteTaskEmail($subject, $user, $task)
     {
         try {
-            $this->mailer->send("emails.delete_task", ['user' => $user, 'task' => $task, 'subject' => $subject], function($message) use ($subject, $user) {
+            $this->mailer->send("emails.delete_task", ['user' => $user, 'task' => $task, 'subject' => $subject], function ($message) use ($subject, $user) {
 
                 $message->from($this->fromAddress, $this->fromName)
                     ->to($user->email)->subject($subject);
@@ -202,6 +208,13 @@ class MailerFactory
             die("Mailer Factory error: " . $ex->getMessage());
         }
     }
+    /**
+     * send mailbox email
+     *
+     *
+     * @param $mailbox
+     * @param $receivers
+     */
     /**
      * send mailbox email
      *
@@ -222,8 +235,8 @@ class MailerFactory
                     $message->from($this->fromAddress, $this->fromName)
                         ->to($user->email)->subject($mailbox->subject);
 
-                    if($mailbox->attachments->count() > 0) {
-                        foreach($mailbox->attachments as $attachment) {
+                    if ($mailbox->attachments->count() > 0) {
+                        foreach ($mailbox->attachments as $attachment) {
                             $message->attach(public_path('uploads/mailbox/' . $attachment->attachment));
                         }
                     }

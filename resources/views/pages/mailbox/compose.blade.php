@@ -85,7 +85,6 @@
         <!-- /.row -->
     </section>
 @endsection
-
 @section('scripts')
 
     <script>

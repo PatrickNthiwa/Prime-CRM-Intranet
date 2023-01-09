@@ -24,7 +24,9 @@ class MailboxController extends Controller
     public function __construct(MailerFactory $mailer)
     {
         $this->middleware('admin:index-list_emails|create-compose_email|show-view_email|toggleImportant-toggle_important_email|trash-trash_email|getReply-reply_email|getForward-forward_email|send-send_email', ['except' => ['store', 'postReply', 'postForward']]);
+
         $this->mailer = $mailer;
+
         $this->getFolders();
     }
 
@@ -102,8 +104,6 @@ class MailboxController extends Controller
         $messages = $query->paginate($perPage);
         return $messages;
     }
-
-
     /**
      * create
      *
@@ -163,7 +163,6 @@ class MailboxController extends Controller
         return redirect('admin/mailbox/Drafts')->with('flash_message', 'Message saved as draft');
     }
 
-
     /**
      * show email
      *
@@ -214,6 +213,13 @@ class MailboxController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
+    /**
+     * trash email
+     *
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function trash(Request $request)
     {
         if(!$request->mailbox_user_folder_ids || count($request->mailbox_user_folder_ids) == 0)
@@ -222,7 +228,6 @@ class MailboxController extends Controller
         $updated = [];
 
         $trashFolder = MailboxFolder::where('title', 'Trash')->first();
-
 
         foreach ($request->mailbox_user_folder_ids as $id) {
 
@@ -235,10 +240,8 @@ class MailboxController extends Controller
             $updated[] = $mailbox_user_folder;
         }
 
-
         return response()->json(['state' => 1, 'msg' => 'messages moved to trashed folder', 'updated' => $updated], 200);
     }
-
 
     /**
      * getReply
@@ -255,7 +258,6 @@ class MailboxController extends Controller
         $unreadMessages = count(getUnreadMessages());
         return view('pages.mailbox.reply', compact('folders', 'unreadMessages', 'mailbox'));
     }
-
 
     /**
      * postReply
@@ -295,8 +297,6 @@ class MailboxController extends Controller
         $this->mailer->sendMailboxEmail($mailbox);
         return redirect('admin/mailbox-show/' . $id)->with('flash_message', 'Reply sent');
     }
-
-
     /**
      * getForward
      *
@@ -453,23 +453,17 @@ class MailboxController extends Controller
     private function validateAttachments($request)
     {
         $check = [];
-
         if($request->hasFile('attachments')) {
-
             $allowedfileExtension = ['jpg', 'jpeg', 'png', 'gif', 'pdf', 'doc', 'docx', 'txt', 'xls', 'xlsx', 'odt', 'dot', 'html', 'htm', 'rtf', 'ods', 'xlt', 'csv', 'bmp', 'odp', 'pptx', 'ppsx', 'ppt', 'potm'];
-
             $files = $request->file('attachments');
-
             foreach ($files as $file) {
                 $filename = $file->getClientOriginalName();
                 $extension = $file->getClientOriginalExtension();
-
                 if(!in_array($extension, $allowedfileExtension)) {
                     $check[] = $extension;
                 }
             }
         }
-
         if(count($check) > 0) {
             throw new \Exception("One or more files contain invalid extensions: ". implode(",", $check));
         }

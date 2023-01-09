@@ -2,7 +2,7 @@
     <!-- Logo -->
     <a href="{{ url('/admin') }}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>M</b>CRM</span>
+        <span class="logo-mini"><b>P</b>CRM</span>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg"><b>Prime</b>CRM</span>
     </a>

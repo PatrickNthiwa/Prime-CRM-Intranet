@@ -6,7 +6,7 @@ return [
     | Messenger display name
     |-------------------------------------
     */
-    'name' => env('CHATIFY_NAME', 'Prime '),
+    'name' => env('CHATIFY_NAME', 'Prime CRM | Chats'),
 
     /*
     |-------------------------------------

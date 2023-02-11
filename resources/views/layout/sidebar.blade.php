@@ -118,7 +118,7 @@
                 <li class="{{ Request::segment(2) == "files"?"active":"" }}">
                <li>
                    <a href="{{ url('/admin/files') }}">
-                      <i class="fa fa-file "></i><span>Files</span>
+                      <i class="glyphicon glyphicon-folder-open"></i><span>Files</span>
                   </a>
 
                </li>

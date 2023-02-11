@@ -136,32 +136,7 @@
                         </li>
                     </ul>
                 </li>
-            @endif
-              
-               @if(user_can('list_files'))
-                <li class="{{ Request::segment(2) == "files"?"active":"" }}">
-               <li>
-                   <a href="{{ url('/admin/files') }}">
-                      <i class="fa fa-file "></i><span>Files</span>
-                  </a>
-                
-               </li>
-          @endif
-    
-            @if(user_can('list_projects'))
-                <li class="{{ Request::segment(2) == "projects"?"active":"" }}">
-               <li>
-                   <a href="{{ url('/admin/projects') }}">
-                     <i class="fa fa-users"></i><span>Projects</span>
-                  </a>
-                
-               </li>
-          @endif 
-          
-            
-           
-       
-       
+            @endif  
     </section>
     <!-- /.sidebar -->
 </aside>

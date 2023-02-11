@@ -98,7 +98,7 @@
                         @endif
                          @if(user_can('chat'))
                             <li class="{{ Request::segment(2) == "chat"?"active":"" }}">
-                                <a href="{{ url('/chatify') }}"><i class="fa fa-envelope">
+                                <a href="{{ url('/chatify') }}"><i class="glyphicon glyphicon-heart">
                                     Chats
                                 </a>
                             </li>

@@ -128,7 +128,7 @@
                 <li class="{{ Request::segment(2) == "projects"?"active":"" }}">
                <li>
                    <a href="{{ url('/admin/projects') }}">
-                     <i class="fa fa-users"></i><span>Projects</span>
+                     <i class="glyphicon glyphicon-th"></i><span>Projects</span>
                   </a>
 
                </li>

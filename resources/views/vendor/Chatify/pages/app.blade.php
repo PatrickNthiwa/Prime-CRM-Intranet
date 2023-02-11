@@ -3,7 +3,7 @@
     {{-- ----------------------Users/Groups lists side---------------------- --}}
     <div class="messenger-listView">
         {{-- Header and search bar --}}
-        <div class="m-header">
+        <div class="m-head
             <nav>
                 <a href="{{url('/admin')}}"><i class="fas fa-angle-double-left"></i> <span class="messenger-headTitle">Back</span> </a>
                 {{-- header buttons --}}

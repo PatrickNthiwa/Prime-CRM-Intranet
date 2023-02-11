@@ -71,7 +71,7 @@
             @if(user_can('list_emails') || user_can('compose_email'))
                 <li class="treeview {{ Request::segment(2) == 'mailbox' || strpos(Request::segment(2), "mailbox")!==FALSE? 'active':'' }}">
                     <a href="#">
-                        <i class="fa fa-envelope"></i> <span>Communication</span>
+                        <i class="glyphicon glyphicon-bell"></i> <span>Communication</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
@@ -79,7 +79,7 @@
                     <ul class="treeview-menu">
                         @if(user_can('list_emails'))
                             <li class="{{ Request::segment(2) == "mailbox" || Request::segment(3)=="" || Request::segment(3)=="Inbox"?"active":"" }}">
-                                <a href="{{ url('/admin/mailbox') }}"><i class="fa fa-envelope">
+                                <a href="{{ url('/admin/mailbox') }}"><i class="fa fa-envelope"></i>
                                     Emails
                                     @if(count(getUnreadMessages()) > 0)
                                         <span class="pull-right-container">
@@ -91,14 +91,14 @@
                         @endif
                         @if(user_can('compose_email'))
                             <li class="{{ Request::segment(2) == "mailbox-create"?"active":"" }}">
-                                <a href="{{ url('/admin/mailbox-create') }}"><i class="glyphicon glyphicon-pencil">
+                                <a href="{{ url('/admin/mailbox-create') }}"><i class="	glyphicon glyphicon-pencil"></i>
                                     Compose
                                 </a>
                             </li>
                         @endif
                          @if(user_can('chat'))
                             <li class="{{ Request::segment(2) == "chat"?"active":"" }}">
-                                <a href="{{ url('/chatify') }}"><i class="glyphicon glyphicon-heart">
+                                <a href="{{ url('/chatify') }}"><i class="	glyphicon glyphicon-heart"></i>
                                     Chats
                                 </a>
                             </li>
@@ -118,7 +118,7 @@
                 <li class="{{ Request::segment(2) == "files"?"active":"" }}">
                <li>
                    <a href="{{ url('/admin/files') }}">
-                      <i class="fa fa-file "></i><span>Files</span>
+                      <i class="glyphicon glyphicon-folder-open"></i><span>Files</span>
                   </a>
 
                </li>
@@ -137,7 +137,7 @@
             @if(\Auth::user()->is_admin == 1)
                 <li class="{{ in_array(Request::segment(2), ['users', 'permissions', 'roles'])?"active":"" }} treeview">
                     <a href="#">
-                        <i class="glyphicon glyphicon-cogglyphicon glyphicon-cogglyphicon glyphicon-cog"></i> <span>Settings</span>
+                        <i class="glyphicon glyphicon-cog"></i> <span>Settings</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
@@ -157,6 +157,7 @@
                 </li>
             @endif
 
+
             @if(user_can('list_contacts'))
                 <li class="{{ Request::segment(2) == ""?"active":"" }}">
                <li>
@@ -170,14 +171,14 @@
             <ul class="sidebar-menu" data-widget="tree">
             <li class="{{ Request::segment(2) == ""?"active":"" }}">
                 <a href="{{ url('/admin') }}">
-                    <i class="fa fa-dashboard"></i> <span>Quick Links</span>
+                    <i class="fa fa-spinner"></i> <span>Quick Links</span>
                 </a>
             </li>
             @if(user_can('list_contacts'))
                 <li class="{{ Request::segment(2) == ""?"active":"" }}">
                <li>
                    <a href="{{ url('#') }}">
-                     <i class="fa fa-users"></i><span>EazzyRent</span>
+                     <i class="fa fa-edge"></i><span>EazzyRent</span>
                   </a>
 
                </li>
@@ -185,7 +186,7 @@
                 <li class="{{ Request::segment(2) == ""?"active":"" }}">
                <li>
                    <a href="{{ url('#') }}">
-                     <i class="fa fa-users"></i><span>Loanspur</span>
+                     <i class="fa fa-cc-amex"></i><span>Loanspur</span>
                   </a>
 
                </li>

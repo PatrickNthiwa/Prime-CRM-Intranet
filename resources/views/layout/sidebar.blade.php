@@ -170,7 +170,7 @@
 
             <ul class="sidebar-menu" data-widget="tree">
             <li class="{{ Request::segment(2) == ""?"active":"" }}">
-                <a href="{{ url('/admin') }}">
+                <a href="{{ url('#') }}">
                     <i class="fa fa-spinner"></i> <span>Quick Links</span>
                 </a>
             </li>

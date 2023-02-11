@@ -99,7 +99,7 @@
                          @if(user_can('chat'))
                             <li class="{{ Request::segment(2) == "chat"?"active":"" }}">
                                 <a href="{{ url('/chatify') }}">
-                                    Chat
+                                    Chats
                                 </a>
                             </li>
                         @endif
@@ -114,6 +114,25 @@
                     </a>
                 </li>
             @endif
+            @if(user_can('list_files'))
+                <li class="{{ Request::segment(2) == "files"?"active":"" }}">
+               <li>
+                   <a href="{{ url('/admin/files') }}">
+                      <i class="fa fa-file "></i><span>Files</span>
+                  </a>
+                
+               </li>
+          @endif
+    
+            @if(user_can('list_projects'))
+                <li class="{{ Request::segment(2) == "projects"?"active":"" }}">
+               <li>
+                   <a href="{{ url('/admin/projects') }}">
+                     <i class="fa fa-users"></i><span>Projects</span>
+                  </a>
+                
+               </li>
+          @endif 
 
             @if(\Auth::user()->is_admin == 1)
                 <li class="{{ in_array(Request::segment(2), ['users', 'permissions', 'roles'])?"active":"" }} treeview">
@@ -137,6 +156,13 @@
                     </ul>
                 </li>
             @endif  
+            <ul class="sidebar-menu" data-widget="tree">
+            <!--<li class="header">MAIN NAVIGATION</li>-->
+            <li class="{{ Request::segment(2) == ""?"active":"" }}">
+                <a href="{{ url('/admin') }}">
+                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                </a>
+            </li>
     </section>
     <!-- /.sidebar -->
 </aside>

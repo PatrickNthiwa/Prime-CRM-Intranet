@@ -185,7 +185,7 @@
                 <li class="{{ Request::segment(2) == ""?"active":"" }}">
                <li>
                    <a href="{{ url('#') }}">
-                     <i class="fa fa-cc-amex"></i><span>Loanspur</span>
+                     <i class="fa fa-users"></i><span>Loanspur</span>
                   </a>
 
                </li>

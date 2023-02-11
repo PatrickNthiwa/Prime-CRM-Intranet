@@ -71,7 +71,7 @@
             @if(user_can('list_emails') || user_can('compose_email'))
                 <li class="treeview {{ Request::segment(2) == 'mailbox' || strpos(Request::segment(2), "mailbox")!==FALSE? 'active':'' }}">
                     <a href="#">
-                        <i class="fa fa-envelope"></i> <span>Communication</span>
+                        <i class="glyphicon glyphicon-bell"></i> <span>Communication</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>

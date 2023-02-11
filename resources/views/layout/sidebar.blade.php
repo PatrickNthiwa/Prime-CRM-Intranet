@@ -79,7 +79,7 @@
                     <ul class="treeview-menu">
                         @if(user_can('list_emails'))
                             <li class="{{ Request::segment(2) == "mailbox" || Request::segment(3)=="" || Request::segment(3)=="Inbox"?"active":"" }}">
-                                <a href="{{ url('/admin/mailbox') }}">
+                                <a href="{{ url('/admin/mailbox') }}"><i class="fa fa-envelope">
                                     Emails
                                     @if(count(getUnreadMessages()) > 0)
                                         <span class="pull-right-container">

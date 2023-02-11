@@ -120,19 +120,19 @@
                    <a href="{{ url('/admin/files') }}">
                       <i class="fa fa-file "></i><span>Files</span>
                   </a>
-                
+
                </li>
           @endif
-    
+
             @if(user_can('list_projects'))
                 <li class="{{ Request::segment(2) == "projects"?"active":"" }}">
                <li>
                    <a href="{{ url('/admin/projects') }}">
                      <i class="fa fa-users"></i><span>Projects</span>
                   </a>
-                
+
                </li>
-          @endif 
+          @endif
 
             @if(\Auth::user()->is_admin == 1)
                 <li class="{{ in_array(Request::segment(2), ['users', 'permissions', 'roles'])?"active":"" }} treeview">
@@ -155,13 +155,51 @@
                         </li>
                     </ul>
                 </li>
-            @endif  
+            @endif
+            @if(user_can('list_projects'))
+                <li class="{{ Request::segment(2) == "projects"?"active":"" }}">
+               <li>
+                   <a href="{{ url('/admin/projects') }}">
+                     <i class="fa fa-users"></i><span>Projects</span>
+                  </a>
+
+               </li>
+          @endif
+
+            @if(user_can('list_contacts'))
+                <li class="{{ Request::segment(2) == ""?"active":"" }}">
+               <li>
+                   <a href="{{ url('#') }}">
+                     <i class=""></i><span></span>
+                  </a>
+
+               </li>
+          @endif
+
             <ul class="sidebar-menu" data-widget="tree">
             <li class="{{ Request::segment(2) == ""?"active":"" }}">
                 <a href="{{ url('/admin') }}">
                     <i class="fa fa-dashboard"></i> <span>Quick Links</span>
                 </a>
             </li>
+            @if(user_can('list_contacts'))
+                <li class="{{ Request::segment(2) == ""?"active":"" }}">
+               <li>
+                   <a href="{{ url('#') }}">
+                     <i class="fa fa-users"></i><span>EazzyRent</span>
+                  </a>
+
+               </li>
+          @endif     @if(user_can('list_contacts'))
+                <li class="{{ Request::segment(2) == ""?"active":"" }}">
+               <li>
+                   <a href="{{ url('#') }}">
+                     <i class="fa fa-users"></i><span>Loanspur</span>
+                  </a>
+
+               </li>
+          @endif
+
     </section>
     <!-- /.sidebar -->
 </aside>

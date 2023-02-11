@@ -137,7 +137,7 @@
             @if(\Auth::user()->is_admin == 1)
                 <li class="{{ in_array(Request::segment(2), ['users', 'permissions', 'roles'])?"active":"" }} treeview">
                     <a href="#">
-                        <i class="fa fa-users"></i> <span>Settings</span>
+                        <i class="glyphicon glyphicon-cogglyphicon glyphicon-cogglyphicon glyphicon-cogglyphicon glyphicon-cog"></i> <span>Settings</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>

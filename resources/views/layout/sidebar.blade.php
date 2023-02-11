@@ -170,7 +170,7 @@
             <ul class="sidebar-menu" data-widget="tree">
             <li class="{{ Request::segment(2) == ""?"active":"" }}">
                 <a href="{{ url('/admin') }}">
-                    <i class="fa fa-dashboard"></i> <span>Quick Links</span>
+                    <i class="glyphicon glyphicon-apple"></i> <span>Quick Links</span>
                 </a>
             </li>
             @if(user_can('list_contacts'))
@@ -185,7 +185,7 @@
                 <li class="{{ Request::segment(2) == ""?"active":"" }}">
                <li>
                    <a href="{{ url('#') }}">
-                     <i class="fa fa-users"></i><span>Loanspur</span>
+                     <i class="fa fa-cc-amex"></i><span>Loanspur</span>
                   </a>
 
                </li>

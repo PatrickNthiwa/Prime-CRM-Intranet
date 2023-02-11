@@ -38,6 +38,9 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 {{--<script src="{{ url('theme') . '/dist/' }}/js/pages/dashboard.js"></script>--}}
 <!-- AdminLTE for demo purposes -->
+ <div align="center">
+        <p class="copyright">&copy; <?php echo date ('Y'); ?> Umoja Magharibi</p>
+    </div>
 <script src="{{ url('theme') . '/dist/' }}/js/demo.js"></script>
 <!-- Custom script for initializing widgets -->
 <script src="{{ url('theme') }}/custom.js"></script>

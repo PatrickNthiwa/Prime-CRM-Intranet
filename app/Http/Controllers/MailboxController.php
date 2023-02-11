@@ -1,10 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Helpers\MailerFactory;
 use App\Models\MailboxFolder;
 use App\Models\Mailbox;
+use App\Models\Contact;
+use App\Models\ContactEmail;
 use App\Models\MailboxAttachment;
 use App\Models\MailboxFlags;
 use App\Models\MailboxReceiver;
@@ -111,14 +112,15 @@ class MailboxController extends Controller
      *
      * @return Factory|\Illuminate\View\View
      */
-    public function create()
+     public function create()
     {
         $folders = $this->folders;
         $unreadMessages = count(getUnreadMessages());
         $users = User::where('is_active', 1)->where('id', '!=', Auth::user()->id)->get();
-        return view('pages.mailbox.compose', compact('folders', 'unreadMessages', 'users'));
+        return view('pages.mailbox.compose', compact('folders',
+            'unreadMessages', 'users'));
     }
-
+//{
     /**
      * store
      *
@@ -251,7 +253,8 @@ class MailboxController extends Controller
      * @param $id
      * @return Factory|\Illuminate\View\View
      */
-    public function getReply($id)
+ 
+   public function getReply($id)
     {
         $mailbox = Mailbox::find($id);
         $folders = $this->folders;
@@ -269,7 +272,7 @@ class MailboxController extends Controller
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postReply(Request $request, $id)
+     public function postReply(Request $request, $id)
     {
         $this->validate($request, [
             'body' => 'required'
@@ -282,7 +285,7 @@ class MailboxController extends Controller
         // save message
         $old_mailbox = Mailbox::find($id);
         $mailbox = new Mailbox();
-        $mailbox->subject = starts_with($old_mailbox->subject, "RE:")?$old_mailbox->subject:"RE: " . $old_mailbox->subject;
+        $mailbox->subject = str_starts_with($old_mailbox->subject, "RE:")?$old_mailbox->subject:"RE: " . $old_mailbox->subject;
         $mailbox->body = $request->body;
         $mailbox->sender_id = Auth::user()->id;
         $mailbox->time_sent = date("Y-m-d H:i:s");
@@ -297,6 +300,7 @@ class MailboxController extends Controller
         $this->mailer->sendMailboxEmail($mailbox);
         return redirect('admin/mailbox-show/' . $id)->with('flash_message', 'Reply sent');
     }
+
     /**
      * getForward
      *
@@ -352,13 +356,28 @@ class MailboxController extends Controller
         $this->save(1, $receiver_ids, $mailbox);
         // save attachments if found
         $this->uploadAttachments($request, $mailbox);
+        
+        
         // if the old mailbox has attachments copy them into the new mailbox
-        $this->copyAttachments($old_mailbox, $mailbox);
+        // $this->copyAttachments($old_mailbox, $mailbox);
+       
+       
         // send email
         $this->mailer->sendMailboxEmail($mailbox);
         return redirect('admin/mailbox/Sent')->with('flash_message', 'Message sent');
     }
+      /**
+     * send
+     *
+     * used to copy attachments
+     *
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
 
+public function copyAttachments($id){
+    return ;
+}
     /**
      * send
      *
@@ -367,6 +386,7 @@ class MailboxController extends Controller
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
+     
     public function send($id)
     {
         $mailbox = Mailbox::find($id);

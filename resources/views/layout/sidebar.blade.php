@@ -17,7 +17,7 @@
 {{--        </div>--}}
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">MAIN NAVIGATION</li>
+            <!--<li class="header">MAIN NAVIGATION</li>-->
             <li class="{{ Request::segment(2) == ""?"active":"" }}">
                 <a href="{{ url('/admin') }}">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
@@ -46,7 +46,7 @@
                             <a href="{{ url('/admin/contacts?status_name=Customer') }}"><i class="fa fa-user-circle"></i> Customers</a>
                         </li>
                         <li class="{{ Request::segment(2) == "contacts" && request('status_name') == 'Close'?"active":"" }}">
-                            <a href="{{ url('/admin/contacts?status_name=Close') }}"><i class="fa fa-ban"></i> Close</a>
+                            <a href="{{ url('/admin/contacts?status_name=Close') }}"><i class="fa fa-ban"></i> Rejected</a>
                         </li>
                     </ul>
                 </li>
@@ -96,6 +96,13 @@
                                 </a>
                             </li>
                         @endif
+                         @if(user_can('chat'))
+                            <li class="{{ Request::segment(2) == "chat"?"active":"" }}">
+                                <a href="{{ url('/chatify') }}">
+                                    Chat
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 </li>
             @endif
@@ -111,7 +118,7 @@
             @if(\Auth::user()->is_admin == 1)
                 <li class="{{ in_array(Request::segment(2), ['users', 'permissions', 'roles'])?"active":"" }} treeview">
                     <a href="#">
-                        <i class="fa fa-users"></i> <span>User Management</span>
+                        <i class="fa fa-users"></i> <span>Settings</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
@@ -130,7 +137,31 @@
                     </ul>
                 </li>
             @endif
-        </ul>
+              
+               @if(user_can('list_files'))
+                <li class="{{ Request::segment(2) == "files"?"active":"" }}">
+               <li>
+                   <a href="{{ url('/admin/files') }}">
+                      <i class="fa fa-file "></i><span>Files</span>
+                  </a>
+                
+               </li>
+          @endif
+    
+            @if(user_can('list_projects'))
+                <li class="{{ Request::segment(2) == "projects"?"active":"" }}">
+               <li>
+                   <a href="{{ url('/admin/projects') }}">
+                     <i class="fa fa-users"></i><span>Projects</span>
+                  </a>
+                
+               </li>
+          @endif 
+          
+            
+           
+       
+       
     </section>
     <!-- /.sidebar -->
 </aside>

@@ -9,13 +9,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class DocumentsController extends Controller
 {
-    protected $mailer;
+    // protected $mailer;
 
-    public function __construct(MailerFactory $mailer)
-    {
-        $this->middleware('admin:index-list_documents|create-create_document|show-view_document|edit-edit_document|destroy-delete_document', ['except' => ['store', 'update']]);
-        $this->mailer = $mailer;
-    }
+    // public function __construct(MailerFactory $mailer)
+    // {
+    //     $this->middleware('admin:index-list_documents|create-create_document|show-view_document|edit-edit_document|destroy-delete_document', ['except' => ['store', 'update']]);
+    //     $this->mailer = $mailer;
+    // }
 
     /**
      * Display a listing of the resource.
@@ -68,9 +68,9 @@ class DocumentsController extends Controller
         $requestData['file'] = uploadFile($request, 'file', public_path('uploads/documents'));
         $requestData['created_by_id'] = Auth::user()->id;
         $document = Document::create($requestData);
-        if (isset($requestData['assigned_user_id']) && getSetting("enable_email_notification") == 1) {
-            $this->mailer->sendAssignDocumentEmail("Document assigned to you", User::find($requestData['assigned_user_id']), $document);
-        }
+        // if (isset($requestData['assigned_user_id']) && getSetting("enable_email_notification") == 1) {
+        //     $this->mailer->sendAssignDocumentEmail("Document assigned to you", User::find($requestData['assigned_user_id']), $document);
+        // }
         return redirect('admin/documents')->with('flash_message', 'Document added!');
     }
 
@@ -123,9 +123,9 @@ class DocumentsController extends Controller
         $document = Document::findOrFail($id);
         $old_assign_user_id = $document->assigned_user_id;
         $document->update($requestData);
-        if (isset($requestData['assigned_user_id']) && $old_assign_user_id != $requestData['assigned_user_id'] && getSetting("enable_email_notification") == 1) {
-            $this->mailer->sendAssignDocumentEmail("Document assigned to you", User::find($requestData['assigned_user_id']), $document);
-        }
+        // if (isset($requestData['assigned_user_id']) && $old_assign_user_id != $requestData['assigned_user_id'] && getSetting("enable_email_notification") == 1) {
+        //     $this->mailer->sendAssignDocumentEmail("Document assigned to you", User::find($requestData['assigned_user_id']), $document);
+        // }
         return redirect('admin/documents')->with('flash_message', 'Document updated!');
     }
 
@@ -156,9 +156,9 @@ class DocumentsController extends Controller
         ]);
         $document = Document::find($id);
         $document->update(['assigned_user_id' => $request->assigned_user_id]);
-        if (getSetting("enable_email_notification") == 1) {
-            $this->mailer->sendAssignDocumentEmail("Document assigned to you", User::find($request->assigned_user_id), $document);
-        }
+        // if (getSetting("enable_email_notification") == 1) {
+        //     $this->mailer->sendAssignDocumentEmail("Document assigned to you", User::find($request->assigned_user_id), $document);
+        // }
         return redirect('admin/documents')->with('flash_message', 'Document assigned!');
     }
 

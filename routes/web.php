@@ -33,6 +33,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('/roles', '\App\Http\Controllers\RolesController');
 
     Route::get('/users/role/{id}', '\App\Http\Controllers\UsersController@getRole');
+      
 
     Route::put('/users/role/{id}', '\App\Http\Controllers\UsersController@updateRole');
 
@@ -51,6 +52,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/api/contacts/get-contacts-by-status', '\App\Http\Controllers\ContactsController@getContactsByStatus');
 
     Route::resource('/tasks', '\App\Http\Controllers\TasksController');
+    Route::resource('/projects', '\App\Http\Controllers\ProjectController');
+
+    Route::resource('/files', '\App\Http\Controllers\FilesController');
+    
+      Route::get('/files/{id}/assign', '\App\Http\Controllers\FilesController@getAssignDocument');
+
+    Route::put('/files/{id}/assign', '\App\Http\Controllers\FilesController@postAssignDocument');
 
     Route::get('/tasks/{id}/assign', '\App\Http\Controllers\TasksController@getAssignTask');
 

@@ -67,19 +67,19 @@
                                         <td>{{ $item->assignedTo != null ? $item->assignedTo->name : "not set" }}</td>
                                         <td>
                                             @if(user_can('view_document'))
-                                                <a href="{{ url('/admin/documents/' . $item->id) }}" title="View document"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                                <a href="{{ url('/admin/documents/' . $item->id) }}" title="View document"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> </button></a>
                                             @endif
                                             @if(user_can('edit_document'))
-                                                <a href="{{ url('/admin/documents/' . $item->id . '/edit') }}" title="Edit document"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                                <a href="{{ url('/admin/documents/' . $item->id . '/edit') }}" title="Edit document"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button></a>
                                             @endif
                                             @if(user_can('assign_document'))
-                                                <a href="{{ url('/admin/documents/' . $item->id . '/assign') }}" title="Assign document"><button class="btn btn-primary btn-sm"><i class="fa fa-envelope-o" aria-hidden="true"></i> Assign</button></a>
+                                                <a href="{{ url('/admin/documents/' . $item->id . '/assign') }}" title="Assign document"><button class="btn btn-primary btn-sm"><i class="fa fa-envelope-o" aria-hidden="true"></i> </button></a>
                                             @endif
                                             @if(user_can('delete_document'))
                                                 <form method="POST" action="{{ url('/admin/documents' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                     {{ method_field('DELETE') }}
                                                     {{ csrf_field() }}
-                                                    <button type="submit" class="btn btn-danger btn-sm" title="Delete document" onclick="return confirm('Confirm delete?')"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm" title="Delete document" onclick="return confirm('Confirm delete?')"><i class="fa fa-trash-o" aria-hidden="true"></i> </button>
                                                 </form>
                                             @endif
                                         </td>

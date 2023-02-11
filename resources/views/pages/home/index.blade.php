@@ -29,7 +29,7 @@
                             <div class="inner">
                                 <h3>{{ count(getContacts()) }}</h3>
 
-                                <p>Contacts</p>
+                                <p>Your Contacts</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
@@ -43,11 +43,11 @@
                 @if(count(getContacts('Lead')) > 0)
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-green">
+                        <div class="small-box bg-yellow">
                             <div class="inner">
                                 <h3>{{count(getContacts('Lead'))}}</h3>
 
-                                <p>Leads</p>
+                                <p>Total Leads</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>
@@ -65,7 +65,7 @@
                             <div class="inner">
                                 <h3>{{count(getContacts('Opportunity'))}}</h3>
 
-                                <p>Opportunities</p>
+                                <p>Total Opportunities</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-person-add"></i>
@@ -79,11 +79,11 @@
                 @if(count(getContacts('Customer')) > 0)
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-red">
+                        <div class="small-box bg-green">
                             <div class="inner">
                                 <h3>{{count(getContacts('Customer'))}}</h3>
 
-                                <p>Potential Customers</p>
+                                <p>Customers</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-pie-graph"></i>
@@ -93,17 +93,32 @@
                     </div>
                     <!-- ./col -->
                 @endif
-            </div>
+                
+                     @if(count(getContacts('Customer')) > 0)
+                    <div class="col-lg-3 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-red">
+                            <div class="inner">
+                                <h3>{{count(getContacts('Close'))}}</h3>
 
+                                <p>Rejected</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-pie-graph"></i>
+                            </div>
+                            <a href="{{ url('admin/contacts?status_name=Close') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                @endif
+            </div>
             <div class="row">
                 <section class="col-lg-12 connectedSortable ui-sortable">
                     <!-- TO DO List -->
                     <div class="box box-primary">
                         <div class="box-header">
                             <i class="ion ion-clipboard"></i>
-
                             <h3 class="box-title">My Team</h3>
-
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -204,7 +219,7 @@
                                 <div class="inner">
                                     <h3>{{ \Auth::user()->customers->count() }}</h3>
 
-                                    <p>My Potential Customers</p>
+                                    <p>My Customers</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-pie-graph"></i>
@@ -263,5 +278,7 @@
     </section>
 
 
-
 @stop
+
+
+

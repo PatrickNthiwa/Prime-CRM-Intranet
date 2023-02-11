@@ -70,19 +70,19 @@
                                         <td>{{ $item->created_at }}</td>
                                         <td>
                                             @if(user_can('view_contact'))
-                                                <a href="{{ url('/admin/contacts/' . $item->id) }}" title="View contact"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                                <a href="{{ url('/admin/contacts/' . $item->id) }}" title="View contact"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
                                             @endif
                                             @if(user_can('edit_contact'))
-                                                <a href="{{ url('/admin/contacts/' . $item->id . '/edit') }}" title="Edit contact"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                                <a href="{{ url('/admin/contacts/' . $item->id . '/edit') }}" title="Edit contact"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button></a>
                                             @endif
                                             @if(user_can('assign_contact'))
-                                                <a href="{{ url('/admin/contacts/' . $item->id . '/assign') }}" title="Assign contact"><button class="btn btn-primary btn-sm"><i class="fa fa-envelope-o" aria-hidden="true"></i> Assign</button></a>
+                                                <a href="{{ url('/admin/contacts/' . $item->id . '/assign') }}" title="Assign contact"><button class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-ok" aria-hidden="true"></i> </button></a>
                                             @endif
                                             @if(user_can('delete_contact'))
                                                 <form method="POST" action="{{ url('/admin/contacts' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                     {{ method_field('DELETE') }}
                                                     {{ csrf_field() }}
-                                                    <button type="submit" class="btn btn-danger btn-sm" title="Delete contact" onclick="return confirm('Confirm delete?')"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm" title="Delete contact" onclick="return confirm('Confirm delete?')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                                 </form>
                                             @endif
                                         </td>

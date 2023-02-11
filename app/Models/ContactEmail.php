@@ -8,5 +8,5 @@ class ContactEmail extends Model
 {
     protected $table = "contact_email";
 
-    protected $fillable = ["email", "contact_id"];
+    protected $fillable = ["email", "contact_id","is_active"];
 }

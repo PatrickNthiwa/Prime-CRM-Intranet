@@ -56,6 +56,7 @@
                             </div>
 
                             @if(!empty($user->image))
+                               @csrf
                                 <img src="{{ url('uploads/users/' . $user->image) }}" width="200" height="180"/>
                             @endif
 

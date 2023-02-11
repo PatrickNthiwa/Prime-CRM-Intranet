@@ -10,7 +10,7 @@ class MailboxReceiver extends Model
 {
     protected $table = "mailbox_receiver";
 
-    protected $fillable = ["mailbox_id", "receiver_id"];
+    protected $fillable = ["mailbox_id", "receiver_id","contact_id"];
 
 
     public function mailbox()
@@ -22,4 +22,8 @@ class MailboxReceiver extends Model
     {
         return $this->belongsTo(User::class, "receiver_id");
     }
+    //   public function contact()
+    // {
+    //     return $this->belongsTo(ContactEmail::class, "contact_id");
+    // }
 }

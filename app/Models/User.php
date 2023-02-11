@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use App\Models\Contact;
@@ -46,8 +45,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(Contact::class, 'assigned_user_id');
     }
-
-
     /**
      * get all leads assigned to user
      */
@@ -103,7 +100,7 @@ class User extends Authenticatable
 
 
     /**
-     * get all completed tasks assigned to user
+     * get all completed tasks assigned to userhttp://primecrm.theprimehouse.co.ke/login
      */
     public function completedTasks()
     {

@@ -49,6 +49,7 @@
                                     @foreach($users as $user)
                                         <option value="{{ $user->id }}" {{ $selected_receivers!=null && in_array($user->id, $selected_receivers)?"selected":"" }}>{{ $user->name }}</option>
                                     @endforeach
+                          
                                 </select>
                             </div>
                             <div class="form-group">
@@ -60,10 +61,12 @@
                                 </textarea>
                             </div>
                             <div class="form-group">
-                                <div class="btn btn-default btn-file">
-                                    <i class="fa fa-paperclip"></i> Attachments
-                                    <input type="file" name="attachments[]" multiple>
-                                </div>
+                                <label>Attachment file:</label>
+                                <input type="file" name="attachments[]"><br><br>
+                                <!--<div class="btn btn-default btn-file">-->
+                                <!--    <i class="fa fa-paperclip"></i> Attachments-->
+                                <!--    <input type="file" name="attachments[]" multiple>-->
+                                <!--</div>-->
                                 <p class="help-block">Max. {{ (int)(ini_get('upload_max_filesize')) }}M</p>
                             </div>
                         </div>
@@ -73,7 +76,7 @@
                                 <button type="submit" name="submit" value="2" class="btn btn-default"><i class="fa fa-pencil"></i> Draft</button>
                                 <button type="submit" name="submit" value="1" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Send</button>
                             </div>
-                            <button type="reset" class="btn btn-default"><i class="fa fa-times"></i> Discard</button>
+                            <!--<button type="reset" class="btn btn-default"><i class="fa fa-times"></i> Discard</button>-->
                         </div>
                         <!-- /.box-footer -->
                     </div>

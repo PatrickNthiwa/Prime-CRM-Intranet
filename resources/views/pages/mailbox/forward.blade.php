@@ -63,10 +63,12 @@
 
                                 @include('pages.mailbox.includes.attachments', ['mailbox' => $mailbox])
 
-                                <div class="btn btn-default btn-file">
-                                    <i class="fa fa-paperclip"></i> Attachments
-                                    <input type="file" name="attachments[]" multiple>
-                                </div>
+                                <!--<div class="btn btn-default btn-file">-->
+                                    <label>Attachment file:</label>
+                                <input type="file" name="attachments[]"><br><br>
+                                <!--    <i class="fa fa-paperclip"></i> Attachments-->
+                                <!--    <input type="file" name="attachments[]" multiple>-->
+                                <!--</div>-->
                                 <p class="help-block">Max. {{ (int)(ini_get('upload_max_filesize')) }}M</p>
                             </div>
                         </div>

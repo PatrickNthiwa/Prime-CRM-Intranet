@@ -26,7 +26,7 @@
                 @include('pages.mailbox.includes.folders_panel')
             </div>
             <div class="col-md-9">
-                <form method="post" action="{{ url('admin/mailbox-reply/' . $mailbox->id) }}" enctype="multipart/form-data">
+                <form method="post" action="{{ url( 'admin/mailbox-reply/'. $mailbox->id ) }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="box box-primary">
                         <div class="box-header with-border">
@@ -49,10 +49,12 @@
                                 </textarea>
                             </div>
                             <div class="form-group">
-                                <div class="btn btn-default btn-file">
-                                    <i class="fa fa-paperclip"></i> Attachments
-                                    <input type="file" name="attachments[]" multiple>
-                                </div>
+                                <label>Attachment file:</label>
+                                <input type="file" name="attachments[]"><br><br>
+                                <!--<div class="btn btn-default btn-file">-->
+                                <!--    <i class="fa fa-paperclip"></i> Attachments-->
+                                <!--    <input type="file" name="attachments[]" multiple>-->
+                                <!--</div>-->
                                 <p class="help-block">Max. {{ (int)(ini_get('upload_max_filesize')) }}M</p>
                             </div>
                         </div>
@@ -79,6 +81,7 @@
         $(function () {
             //Add text editor
             $("#compose-textarea").wysihtml5();
+           
         });
     </script>
 

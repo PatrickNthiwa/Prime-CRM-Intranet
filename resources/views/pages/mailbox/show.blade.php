@@ -36,7 +36,11 @@
                         <div class="mailbox-read-info">
                             <h3>{{ $mailbox->subject }}</h3>
                             <h5>From: {{ $mailbox->sender->email }}
+                            
+                         
                                 <span class="mailbox-read-time pull-right">{{ !empty($mailbox->time_sent)?date("d M. Y h:i A", strtotime($mailbox->time_sent)):"not sent yet" }}</span></h5>
+                       
+                            
                         </div>
 
                         <!-- /.mailbox-controls -->

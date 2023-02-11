@@ -1,7 +1,7 @@
 <?php
 
 namespace Chatify\Http\Controllers;
-
+nams
 use App\Models\ChMessage;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

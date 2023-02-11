@@ -71,7 +71,7 @@
             @if(user_can('list_emails') || user_can('compose_email'))
                 <li class="treeview {{ Request::segment(2) == 'mailbox' || strpos(Request::segment(2), "mailbox")!==FALSE? 'active':'' }}">
                     <a href="#">
-                        <i class="glyphicon glyphicon-bell"></i> <span>Communication</span>
+                        <i class="fa fa-envelope"></i> <span>Communication</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
@@ -118,7 +118,7 @@
                 <li class="{{ Request::segment(2) == "files"?"active":"" }}">
                <li>
                    <a href="{{ url('/admin/files') }}">
-                      <i class="glyphicon glyphicon-folder-open"></i><span>Files</span>
+                      <i class="fa fa-file "></i><span>Files</span>
                   </a>
 
                </li>
@@ -137,7 +137,7 @@
             @if(\Auth::user()->is_admin == 1)
                 <li class="{{ in_array(Request::segment(2), ['users', 'permissions', 'roles'])?"active":"" }} treeview">
                     <a href="#">
-                        <i class="glyphicon glyphicon-cogglyphicon glyphicon-cogglyphicon glyphicon-cogglyphicon glyphicon-cog"></i> <span>Settings</span>
+                        <i class="glyphicon glyphicon-cogglyphicon glyphicon-cogglyphicon glyphicon-cog"></i> <span>Settings</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
@@ -170,7 +170,7 @@
             <ul class="sidebar-menu" data-widget="tree">
             <li class="{{ Request::segment(2) == ""?"active":"" }}">
                 <a href="{{ url('/admin') }}">
-                    <i class="glyphicon glyphicon-apple"></i> <span>Quick Links</span>
+                    <i class="fa fa-dashboard"></i> <span>Quick Links</span>
                 </a>
             </li>
             @if(user_can('list_contacts'))

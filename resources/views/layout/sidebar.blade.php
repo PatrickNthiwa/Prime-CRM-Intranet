@@ -157,10 +157,9 @@
                 </li>
             @endif  
             <ul class="sidebar-menu" data-widget="tree">
-            <!--<li class="header">MAIN NAVIGATION</li>-->
             <li class="{{ Request::segment(2) == ""?"active":"" }}">
                 <a href="{{ url('/admin') }}">
-                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                    <i class="fa fa-dashboard"></i> <span>Quick Links</span>
                 </a>
             </li>
     </section>

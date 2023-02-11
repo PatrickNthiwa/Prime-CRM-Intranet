@@ -19,7 +19,7 @@
                 <a href="#" @if($type == 'user') class="active-tab" @endif data-view="users">
                     <span class="far fa-user"></span> People</a>
                 <a href="#" @if($type == 'group') class="active-tab" @endif data-view="groups">
-                    <span class="fas fa-users"></span> Groups</a>
+                    <span class=""></span> </a>
             </div>
         </div>
         {{-- tabs and lists --}}

@@ -5,7 +5,7 @@
         {{-- Header and search bar --}}
         <div class="m-header">
             <nav>
-                <a href="#"><i class="glyphicon glyphicon-fast-backward	"></i> <span class="messenger-headTitle">Back</span> </a>
+                <a href="#"><i class="fas fa-inbox"></i> <span class="messenger-headTitle">Back</span> </a>
                 {{-- header buttons --}}
                 <nav class="m-header-right">
                     <a href="#"><i class="fas fa-cog settings-btn"></i></a>

@@ -177,7 +177,7 @@
             @if(user_can('list_contacts'))
                 <li class="{{ Request::segment(2) == ""?"active":"" }}">
                <li>
-                   <a href=https://umojamagharibi.eazzyrent.com/index.jsp"">target="_blank"
+                   <a href=https://umojamagharibi.eazzyrent.com/index.jsp">
                      <i class="fa fa-edge"></i><span>EazzyRent</span>
                   </a>
 

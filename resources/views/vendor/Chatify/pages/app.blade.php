@@ -5,10 +5,10 @@
         {{-- Header and search bar --}}
         <div class="m-header">
             <nav>
-                <a href="#"><i class=""></i> <span class="messenger-headTitle">Back</span> </a>
+                <a href="#"><i class="fas fa-angle-double-left"></i> <span class="messenger-headTitle">Back</span> </a>
                 {{-- header buttons --}}
                 <nav class="m-header-right">
-                    <a href="#"><i class="fas fa-cog settings-btn"></i></a>
+                    <a href="#"><i class="fas fa-cog settings-btn"></i><span class="messenger-headTitle">Back</span></a>
                     <a href="#" class="listView-x"><i class="fas fa-times"></i></a>
                 </nav>
             </nav>

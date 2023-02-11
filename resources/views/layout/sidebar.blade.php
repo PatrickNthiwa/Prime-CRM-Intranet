@@ -185,7 +185,7 @@
           @endif     @if(user_can('list_contacts'))
                 <li class="{{ Request::segment(2) == ""?"active":"" }}">
                <li>
-                   <a href="{{ url('#') }}">
+                   <a href="{{ https://system.loanspur.com/?tenantIdentifier=umoja#/ }}">
                      <i class="fa fa-cc-amex"></i><span>Loanspur</span>
                   </a>
 

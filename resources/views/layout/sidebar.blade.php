@@ -91,14 +91,14 @@
                         @endif
                         @if(user_can('compose_email'))
                             <li class="{{ Request::segment(2) == "mailbox-create"?"active":"" }}">
-                                <a href="{{ url('/admin/mailbox-create') }}">
+                                <a href="{{ url('/admin/mailbox-create') }}"><i class="fa fa-envelope">
                                     Compose
                                 </a>
                             </li>
                         @endif
                          @if(user_can('chat'))
                             <li class="{{ Request::segment(2) == "chat"?"active":"" }}">
-                                <a href="{{ url('/chatify') }}">
+                                <a href="{{ url('/chatify') }}"><i class="fa fa-envelope">
                                     Chats
                                 </a>
                             </li>

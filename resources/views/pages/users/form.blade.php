@@ -8,20 +8,14 @@
     <input class="form-control" name="email" type="text" id="email" value="{{ isset($user->email) ? $user->email : ''}}" >
     {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
 </div>
-@if($formMode == 'create')
-    <div class="form-group {{ $errors->has('password') ? 'has-error' : ''}}">
-        <label for="password" class="control-label">{{ 'Password' }}</label>
-        <input class="form-control" name="password" type="password" id="password" value="{{ isset($user->password) ? $user->password : ''}}" >
-        {!! $errors->first('password', '<p class="help-block">:message</p>') !!}
-    </div>
-@endif
+
 <div class="form-group {{ $errors->has('position_title') ? 'has-error' : ''}}">
-    <label for="position_title" class="control-label">{{ 'Position Title' }}</label>
+    <label for="position_title" class="control-label">{{ 'Officer Title' }}</label>
     <input class="form-control" name="position_title" type="text" id="position_title" value="{{ isset($user->position_title) ? $user->position_title : ''}}" >
     {!! $errors->first('position_title', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('phone') ? 'has-error' : ''}}">
-    <label for="phone" class="control-label">{{ 'Phone' }}</label>
+    <label for="phone" class="control-label">{{ 'Tel No' }}</label>
     <input class="form-control" name="phone" type="text" id="phone" value="{{ isset($user->phone) ? $user->phone : ''}}" >
     {!! $errors->first('phone', '<p class="help-block">:message</p>') !!}
 </div>
@@ -35,7 +29,35 @@
     <input class="form-control" name="image" type="file" id="image" >
     {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
 </div>
-
+@if($formMode == 'create')
+    <div class="form-group {{ $errors->has('password') ? 'has-error' : ''}}">
+        <label for="password" class="control-label">{{ 'Password' }}</label>
+        <input class="form-control" name="password" type="password" id="password" value="{{ isset($user->password) ? $user->password : ''}}" >
+        {!! $errors->first('password', '<p class="help-block">:message</p>') !!}
+    </div>
+     <div class="form-group {{ $errors->has('password') ? 'has-error' : ''}}">
+        <label for="password" class="control-label">{{ 'Confirm Password' }}</label>
+        <input class="form-control" name="password" type="password" id="password" value="{{ isset($user->password) ? $user->password : ''}}" >
+        {!! $errors->first('password', '<p class="help-block">:message</p>') !!}
+    </div>
+@endif
+@if($formMode == 'edit')
+    <div class="form-group {{ $errors->has('password') ? 'has-error' : ''}}">
+        <label for="password" class="control-label">{{ 'Old Password' }}</label>
+        <input class="form-control" name="password" type="password" id="password" value="{{ isset($user->password) ? $user->password : ''}}" >
+        {!! $errors->first('password', '<p class="help-block">:message</p>') !!}
+    </div>
+     <div class="form-group {{ $errors->has('password') ? 'has-error' : ''}}">
+        <label for="password" class="control-label">{{ 'New Password' }}</label>
+        <input class="form-control" name="password" type="password" id="password" value="{{ isset($user->password) ? $user->password : ''}}" >
+        {!! $errors->first('password', '<p class="help-block">:message</p>') !!}
+    </div>
+     <div class="form-group {{ $errors->has('password') ? 'has-error' : ''}}">
+        <label for="password" class="control-label">{{ 'Confirm New Password' }}</label>
+        <input class="form-control" name="password" type="password" id="password" value="{{ isset($user->password) ? $user->password : ''}}" >
+        {!! $errors->first('password', '<p class="help-block">:message</p>') !!}
+    </div>
+@endif
 @if($formMode == 'create' || ($formMode == 'edit' && $user->is_admin == 0))
     <div class="form-group {{ $errors->has('is_active') ? 'has-error' : ''}}">
         <label for="is_active" class="control-label">

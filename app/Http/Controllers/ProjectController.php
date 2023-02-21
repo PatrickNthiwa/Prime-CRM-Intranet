@@ -68,12 +68,15 @@ class ProjectController extends Controller
 
         $requestData = $request->except(['_token']);
         checkDirectory("projects");
-        // $requestData['file'] = uploadFile($request, 'file', public_path('uploads/files'));
         $requestData['user_id'] = Auth::user()->id;
         $project = Project::create($requestData);
-        // if (isset($requestData['user_id']) && getSetting("enable_email_notification") == 1) {
-        //     $this->mailer->sendAssignDocumentEmail("File assigned to you", User::find($requestData['user_id']), $project);
-        // }
+
+        if ($request->hasFile('image')) {
+
+            checkDirectory("projects");
+
+            $requestData['image'] = uploadFile($request, 'image', public_path('uploads/projects'));
+        }
         return redirect('admin/projects')->with('flash_message', 'Project added!');
     }
 
@@ -142,7 +145,7 @@ $requestData['modified_by_id'] = Auth::user()->id;
     public function destroy($id)
     {
         Project::destroy($id);
-        return redirect('admin/projects')->with('flash_message', 'Project  deleted!');
+        return redirect('admin/projects')->with('flash_message', 'Project deleted!');
     }
 
    

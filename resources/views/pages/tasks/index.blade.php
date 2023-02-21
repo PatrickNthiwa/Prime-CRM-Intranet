@@ -24,7 +24,7 @@
 
                         @if(user_can("create_task"))
                             <a href="{{ url('/admin/tasks/create') }}" class="btn btn-success btn-sm pull-right" title="Add New task">
-                                <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                                <i class="fa fa-plus" aria-hidden="true"></i> New Task
                             </a>
                         @endif
 

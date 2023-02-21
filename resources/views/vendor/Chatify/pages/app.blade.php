@@ -5,10 +5,10 @@
         {{-- Header and search bar --}}
         <div class="m-header">
             <nav>
-                <a href="{{url('/admin')}}"><i class="fas fa-angle-double-left"></i> <span class="messenger-headTitle">Back</span> </a>
+                <a href="{{url()->previous()}}"><i class="fas fa-inbox"></i> <span class="messenger-headTitle">Back</span> </a>
                 {{-- header buttons --}}
                 <nav class="m-header-right">
-                    <a href="#"><i class="fas fa-cog settings-btn"></i><span>Customize</span></a>
+                    <a href="#"><i class="fas fa-cog settings-btn"></i></a>
                     <a href="#" class="listView-x"><i class="fas fa-times"></i></a>
                 </nav>
             </nav>

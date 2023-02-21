@@ -33,19 +33,31 @@
                             <table class="table">
                                 <tbody>
                                 @if(\Auth::user()->is_admin == 1)
-                                    <tr>
+                                    <!-- <tr>
                                         <th>S.no</th><td>{{ $project->id }}</td>
-                                    </tr>
+                                    </tr> -->
                                 @endif
                                 <tr><th> Client Name </th><td> {{ $project->name }} </td></tr>
                                 <!-- <tr><th> File </th><td> @if(!empty($document->file)) <a href="{{ url('uploads/documents/' . $document->file) }}"> <i class="fa fa-download"></i> {{$document->file}}</a> @endif </td></tr> -->
                                 <tr><th> Project Status </th><td> {{ $project->getStatus->name}} </td></tr>
                                 <tr><th> Project Type </th><td>{!! $project->type == 1?" Water Drilling":"Building Construction" !!}</td></tr>
+                                <tr><th>Project Description</th><td>{{ $project->description }}</td></tr>
                                 <tr><th>Project Amount</th><td>{{ $project->amount }}</td></tr>
-                                @if(\Auth::user()->is_admin == 1)
+                                <tr><th>Project Cost</th><td>{{ $project->cost }}</td></tr>
+                                <tr><th>Project Location</th><td>{{ $project->location }}</td></tr>
+                                <tr><th>Project Images</th>
+                                @if(!empty($project->image))
+                                        <td>
+                                            <img src="{{ url('uploads/projects/' .  $project->image ) }}" class="pull-right" width="200" height="200" />
+                                        </td>
+                                        @endif
+</tr>
+                                    
+                               
+                                <!-- @if(\Auth::user()->is_admin == 1)
                                     <tr><th> Created by </th><td>{{ $project->createdBy->name }}</td></tr>
                                     
-                                @endif
+                                @endif -->
                                 
                                 </tbody>
                             </table>

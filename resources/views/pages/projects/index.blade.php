@@ -43,10 +43,15 @@
                                     <th> Client Name</th>
                                     <th>Project Type</th>
                                     <th>Project Description</th>
-                                    <th>Status</th>
+                                    
                                 
                                     <th>Project Amount</th>
-                                        <th>Created by</th>
+                                    <th>Project Cost</th>
+                                    <th>Project Location</th>
+                                    <th>Status</th>
+                                    <!-- <th>Project Images</th> -->
+                                    
+                                        <!-- <th>Created by</th> -->
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
@@ -61,10 +66,14 @@
                                         <td>{{ $project->description}}</td>
                                         
                                         <!-- <td>@if(!empty($file->file)) <a href="{{ url('uploads/files/' . $file->file) }}"> <i class="fa fa-download"></i> {{$file->file}}</a> @endif</td> -->
-                                            <td><i class="btn btn-info">{{ $project->getStatus->name}}</i></td>
+                                           
                                             <td>{{ $project->amount }}</td>
+                                            <td>{{$project->cost}}</td>
+                                            <td>{{$project->location}}</td>
+                                            <td><i class="btn btn-info">{{ $project->getStatus->name}}</i></td>
+                                            <!-- <td>{{$project->image}}</td> -->
 <!-- {{--                                        @if(\Auth::user()->is_admin == 1)--}} -->
-                                            <td>{{ $project->createdBy->name }}</td>
+                                            <!-- <td>{{ $project->createdBy->name }}</td> -->
 <!-- {{--                                        @endif--}} -->
                                         <td>
                                             @if(user_can('view_project'))

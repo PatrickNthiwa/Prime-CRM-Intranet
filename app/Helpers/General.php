@@ -1,3 +1,4 @@
+
 <?php
 
 use App\Models\Setting;
@@ -94,6 +95,10 @@ function user_can($permission)
 {
     return Auth::user()->is_admin == 1 || Auth::user()->can($permission);
 }
+function file_policy($permission)
+{
+    return Auth::user()->is_admin==1||Auth::user()->can($permission);
+}
 /**
  * get Unread Messages
  *
@@ -138,6 +143,19 @@ function getContacts($status = null)
 
 }
 
+function getFiles($type = null)
+{
+    if(!$type)
+
+        return \App\Models\File::all();
+
+    return \App\Models\File::join('file_type', 'file_type.id', '=', 'files.type')
+        ->where('file_type.name', $type)
+        ->get();
+
+
+
+}
 
 /**
  * get Users

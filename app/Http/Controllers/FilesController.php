@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Helpers\MailerFactory;
 use App\Models\File;
 use App\Models\FileType;
@@ -11,13 +9,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class FilesController extends Controller
 {
-    // protected $mailer;
+    protected $mailer;
 
-    // public function __construct(MailerFactory $mailer)
-    // {
-    //     $this->middleware('admin:index-list_documents|create-create_document|show-view_document|edit-edit_document|destroy-delete_document', ['except' => ['store', 'update']]);
-    //     $this->mailer = $mailer;
-    // }
+    public function __construct(MailerFactory $mailer)
+    {
+        $this->middleware('admin:index-list_documents|create-create_document|show-view_document|edit-edit_document|destroy-delete_document', ['except' => ['store', 'update']]);
+        $this->mailer = $mailer;
+    }
 
     /**
      * Display a listing of the resource.
@@ -33,11 +31,9 @@ class FilesController extends Controller
         } else {
             $query =File::latest();
         }
-//        // if not is admin user
-//        if (Auth::user()->is_admin == 0) {
-//            $query->where('user_id', Auth::user()->id)
-//                ->orWhere('user_id', Auth::user()->id);
-//        }
+          if(\request('type_name') != null) {
+            $query->where('type', '=', FileType::where('name', \request('type_name'))->first()->id);
+        }
         $files = $query->paginate($perPage);
         return view('pages.files.index', compact('files'));
     }
@@ -61,7 +57,7 @@ class FilesController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-      public function store(Request $request)
+    public function store(Request $request)
     {
         $this->do_validate($request);
 
@@ -70,9 +66,9 @@ class FilesController extends Controller
         $requestData['file'] = uploadFile($request, 'file', public_path('uploads/files'));
         $requestData['user_id'] = Auth::user()->id;
         $file = File::create($requestData);
-        // if (isset($requestData['user_id']) && getSetting("enable_email_notification") == 1) {
-        //     $this->mailer->sendAssignDocumentEmail("File assigned to you", User::find($requestData['user_id']), $file);
-        // }
+        if (isset($requestData['user_id']) && getSetting("enable_email_notification") == 1) {
+            $this->mailer->sendAssignDocumentEmail("File assigned to you", User::find($requestData['user_id']), $file);
+        }
         return redirect('admin/files')->with('flash_message', 'File added!');
     }
 
@@ -125,9 +121,9 @@ class FilesController extends Controller
         $file = File::findOrFail($id);
         $old_user_id = $file->user_id;
         $file->update($requestData);
-        // if (isset($requestData['user_id']) && $old_user_id != $requestData['user_id'] && getSetting("enable_email_notification") == 1) {
-        //     $this->mailer->sendAssignDocumentEmail("File assigned to you", User::find($requestData['user_id']), $file);
-        // }
+        if (isset($requestData['user_id']) && $old_user_id != $requestData['user_id'] && getSetting("enable_email_notification") == 1) {
+            $this->mailer->sendAssignDocumentEmail("File assigned to you", User::find($requestData['user_id']), $file);
+        }
         return redirect('admin/files')->with('flash_message', 'File updated!');
     }
 
@@ -163,7 +159,8 @@ class FilesController extends Controller
 //        }
 //        return redirect('admin/documents')->with('flash_message', 'Document assigned!');
 //    }
-protected function do_validate($request, $is_create = 1)
+
+    protected function do_validate($request, $is_create = 1)
     {
         $mimes = 'mimes:jpg,jpeg,png,gif,pdf,doc,docx,txt,xls,xlsx,odt,dot,html,htm,rtf,ods,xlt,csv,bmp,odp,pptx,ppsx,ppt,potm';
         $this->validate($request, [
@@ -171,5 +168,20 @@ protected function do_validate($request, $is_create = 1)
             'file' => ($is_create == 0 ? $mimes : "required|" . $mimes)
         ]);
     }
+    public function getFilesByStatus(Request $request)
+    {
+        if(!$request->status)
+            return [];
+        $files = File::where('file_type.name', $request->status)
+            ->join('file_type', 'file_type.id', '=', 'files.type');
+//        if(Auth::user()->is_admin == 1) {
+//            return $contacts->get();
+////        }
+        return $files->where(function ($query) {
+            $query->where('assigned_user_id', Auth::user()->id)
+                ->orWhere('created_by_id', Auth::user()->id);
+        })->get();
+    }
+
 }
 

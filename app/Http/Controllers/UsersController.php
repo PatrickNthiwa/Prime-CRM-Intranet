@@ -20,7 +20,24 @@ class UsersController extends Controller
 
         $this->mailer = $mailer;
     }
-
+//    public function sendMail(Request $request)
+//    {
+//        $users = User::whereIn('id',$request->ids)->get();
+//
+//        if ($users->count() > 0) {
+//            foreach($users as $key => $item){
+//                if (!empty($item->email)) {
+//                    $details = [
+//                        'subject' => 'Test From meaningartilce.com',
+//                    ];
+//
+//                    Mail::to($->email)->send(new TestUserMail($details));
+//                }
+//            }
+//        }
+//
+//        return response()->json(['done']);
+//    }
     /**
      * Display a listing of the resource.
      *

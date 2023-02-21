@@ -38,6 +38,8 @@
                     <!-- Authentication Links -->
                     @guest
                    {{--     @if (Route::has('login'))
+                   $login=NOW();
+                   $query = "UPDATE users SET Last_activity = NOW() WHERE id ='$id'";
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>

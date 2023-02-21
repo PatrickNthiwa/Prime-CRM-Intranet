@@ -92,7 +92,7 @@
                         @if(user_can('compose_email'))
                             <li class="{{ Request::segment(2) == "mailbox-create"?"active":"" }}">
                                 <a href="{{ url('/admin/mailbox-create') }}"><i class="	glyphicon glyphicon-pencil"></i>
-                                    Compose
+                                    Compose Quick Mail
                                 </a>
                             </li>
                         @endif

@@ -1,15 +1,21 @@
 @extends('layout.app')
 @section('title', ' | List Files')
 @section('content')
+
+
     <section class="content-header">
         <h1>
             Files
+            <small>Control panel</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{{ url('/admin') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a href="#"><i class="fa fa-file"></i> Home</a></li>
             <li class="active">Files</li>
         </ol>
     </section>
+{{--@if(\Auth::user()->is_admin == 1)--}}
+    <!-- Small boxes (Stat box) -->
+    @include('layout.header_one')
     <section class="content">
         <div class="row">
             <div class="col-md-12">
@@ -43,7 +49,7 @@
                                     <th>Name</th>
                                     <th>File Type</th>
                                         <th>Created by</th>
-                                        <th>Download</th>
+                                        <th>File</th>
                                         @if(\Auth::user()->is_admin == 1)
                                             <th>Action</th>
                                         @endif
@@ -57,7 +63,7 @@
                                             <td>{{ $file->id }}</td>
                                         @endif
                                         <td>{{ $file->name}}</td>
-                                            <td><i class="btn bg-maroon">{{ $file->getType->name }}</i></td>
+                                            <td><i>{{ $file->getType->name }}</i></td>
 
                                             <td>{{ $file->createdBy->name }}</td>
                                         <td>@if(!empty($file->file)) <a href="{{ url('uploads/files/' . $file->file) }}"> <i class="fa fa-download"></i> {{$file->file}}</a> @endif</td>
@@ -65,9 +71,12 @@
 {{--                                        @if(\Auth::user()->is_admin == 1)--}}
 {{--                                        @endif--}}
                                         <td>
-{{--                                            @if(user_can('view_file'))--}}
-{{--                                                <a href="{{ url('/admin/files/' . $file->id) }}" title="View file"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></a>--}}
-{{--                                            @endif--}}
+                                            @if(file_policy('download_file'))
+                                                <a href="{{ url('/admin/files/' . $file->id) }}" title="Download file"><button class="btn btn-info btn-sm"><i class="fa fa-cloud-download" aria-hidden="true"></i></button></a>
+                                            @endif
+                                            @if(user_can('view_file'))
+                                                <a href="{{ url('/admin/files/' . $file->id) }}" title="View file"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
+                                            @endif
                                             @if(user_can('delete_file'))
                                                 <form method="POST" action="{{ url('/admin/files' . '/' . $file->id) }}" accept-charset="UTF-8" style="display:inline">
                                                     {{ method_field('DELETE') }}

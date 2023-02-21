@@ -40,14 +40,18 @@
                                     @if(\Auth::user()->is_admin == 1)
                                         <th>#</th>
                                     @endif
-                                    <th>First Name</th>
-                                    <th>Middle Name</th>
-                                    <th>Last Name</th>
+                                    <th>Name</th>
+                               
+                                    <!--<th>Middle Name</th>-->
+                                    <!--<th>Last Name</th>-->
                                     <th>Status</th>
+                                    <th>Branch</th>
                                     @if(\Auth::user()->is_admin == 1)
                                         <th>Created by</th>
                                     @endif
+                                   
                                     <th>Assigned to</th>
+                                  
                                     <th>Created at</th>
                                     <th>Actions</th>
                                 </tr>
@@ -58,15 +62,21 @@
                                         @if(\Auth::user()->is_admin == 1)
                                             <td>{{ $item->id }}</td>
                                         @endif
-                                        <td>{{ $item->first_name }}</td>
-                                        <td>{{ $item->middle_name }}</td>
-                                        <td>{{ $item->last_name }}</td>
-                                        <td><i class="btn bg-maroon">{{ $item->getStatus->name }}</i></td>
+                                        
+                                        <td>{{$item->position_title}} {{ $item->first_name }} {{$item->last_name}}</td>
+                                        <!--<td>{{ $item->middle_name }}</td>-->
+                                        <!--<td>{{ $item->last_name }}</td>-->
+                                        <td>{{ $item->getStatus->name }}</td>
+                                        <!--this stores the branch name-->
+                                         <td>{{ $item->referral_source }}</td>
+                                         
                                         @if(\Auth::user()->is_admin == 1)
                                             <td>{{ $item->createdBy->name }}</td>
                                         @endif
+                                        
+                                        
                                         <td>{{ $item->assignedTo != null ? $item->assignedTo->name : "not set" }}</td>
-
+                                     
                                         <td>{{ $item->created_at }}</td>
                                         <td>
                                             @if(user_can('view_contact'))

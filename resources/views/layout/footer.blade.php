@@ -38,9 +38,22 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 {{--<script src="{{ url('theme') . '/dist/' }}/js/pages/dashboard.js"></script>--}}
 <!-- AdminLTE for demo purposes -->
+    <div align="center">
+
+                    <i class="fa fa-spinner"></i> <span>Quick Links</span><br>
+        
+                   <a href="https://umojamagharibi.eazzyrent.com/index.jsp"target="_blank" >
+                     <i class="fa fa-edge"></i><span>EazzyRent</span></a><br>
+                
+                   <a href="https://system.loanspur.com/?tenantIdentifier=umoja#/"target="_blank">
+                     <i class="fa fa-cc-amex"></i><span>Loanspur</span><br>
+                  </a>
+
+    </div>
  <div align="center">
         <p class="copyright">&copy; <?php echo date ('Y'); ?> Umoja Magharibi</p>
     </div>
+
 <script src="{{ url('theme') . '/dist/' }}/js/demo.js"></script>
 <!-- Custom script for initializing widgets -->
 <script src="{{ url('theme') }}/custom.js"></script>

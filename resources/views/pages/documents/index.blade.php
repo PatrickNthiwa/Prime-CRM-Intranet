@@ -40,7 +40,7 @@
                                     @if(\Auth::user()->is_admin == 1)
                                         <th>#</th>
                                     @endif
-                                    <th>Name</th>
+                                    <th>Document Name</th>
                                     <th>File</th>
                                     <th>Status</th>
                                     <th>Created at</th>

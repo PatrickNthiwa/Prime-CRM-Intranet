@@ -21,9 +21,9 @@
         @if(\Auth::user()->is_admin == 1)
             <!-- Small boxes (Stat box) -->
             <div class="row">
-
+      
                 @if(count(getContacts()) > 0)
-                    <div class="col-lg-3 col-xs-6">
+                    <div class="col-sm-2 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-aqua">
                             <div class="inner">
@@ -41,7 +41,7 @@
                 @endif
 
                 @if(count(getContacts('Lead')) > 0)
-                    <div class="col-lg-3 col-xs-6">
+                   <div class="col-sm-2 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-yellow">
                             <div class="inner">
@@ -59,9 +59,9 @@
                 @endif
 
                 @if(count(getContacts('Opportunity')) > 0)
-                    <div class="col-lg-3 col-xs-6">
+                    <div class="col-sm-2 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-yellow">
+                        <div class="small-box bg-orange">
                             <div class="inner">
                                 <h3>{{count(getContacts('Opportunity'))}}</h3>
 
@@ -77,7 +77,7 @@
                 @endif
 
                 @if(count(getContacts('Customer')) > 0)
-                    <div class="col-lg-3 col-xs-6">
+                   <div class="col-sm-2 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-green">
                             <div class="inner">
@@ -95,7 +95,7 @@
                 @endif
                 
                      @if(count(getContacts('Customer')) > 0)
-                    <div class="col-lg-3 col-xs-6">
+                    <div class="col-sm-2 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-red">
                             <div class="inner">
@@ -126,6 +126,7 @@
                                 <thead>
                                 <tr>
                                     <th>Name</th>
+                                    <th> Last Login Time $ IP</th>
                                     <th>Email</th>
                                     <th>Position</th>
                                     <th>Contacts</th>
@@ -137,6 +138,7 @@
                                 @foreach(getUsers() as $user)
                                     <tr>
                                         <td>{{ $user->name }}</td>
+                                        <td> {{ $user->last_login_at }} - {{ $user->last_login_ip }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->position_title }}</td>
                                         <td><a href="{{ url('admin/contacts?assigned_user_id=' . $user->id) }}">{{ $user->contacts->count() }}</a></td>

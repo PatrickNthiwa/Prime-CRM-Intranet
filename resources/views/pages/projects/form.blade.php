@@ -47,7 +47,32 @@
                     {!! $errors->first('amount', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+            <div class="col-md-6">
+            <div class="form-group {{ $errors->has('amount') ? 'has-error' : ''}}">
+                    <label for="cost" class="control-label">{{ 'Project Cost' }}</label>
+                    <input class="form-control" name="cost" type="text" id="cost" value="{{ isset($project->cost) ? $project->cost : ''}}" >
+                    {!! $errors->first('amount', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
    </div>
+   <div class="row">
+   <div class="col-md-6">
+  
+                <div class="form-group {{ $errors->has('project_description') ? 'has-error' : ''}}">
+                    <label for="project_description" class="control-label">{{ 'Project Location' }}</label>
+                    <input class="form-control" name="location" type="text" id="project_location" value="{{ isset($project->project_location) ? $project->project_location : ''}}" >
+                    {!! $errors->first('project_description', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div> 
+            <div class="col-md-6">
+                <div class="form-group {{ $errors->has('amount') ? 'has-error' : ''}}">
+                    <label for="image" class="control-label">{{ 'Project Image' }}</label>
+                    <input class="form-control" name="image" type="file" id="image" value="{{ isset($project->image) ? $project->image : ''}}" >
+                    {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+   </div>
+   
    <div class="form-group">
-    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
+    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Add new project' }}">
 </div>

@@ -27,7 +27,7 @@ class ContactsController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->get('search');
-        $perPage = 25;
+        $perPage = 10;
         if (!empty($keyword)) {
             $query = Contact::where('first_name', 'like', "%$keyword%")->orWhere('middle_name', 'like', "%$keyword%")->orWhere('last_name', 'like', "%$keyword%");
         } else {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -26,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected string $redirectTo = '/admin';
+    protected  string $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -39,7 +40,7 @@ class LoginController extends Controller
 //    }
 
 
-    public function login(\Illuminate\Http\Request $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+    public function login(\Illuminate\Http\Request $request)
     {
         $this->validateLogin($request);
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
@@ -72,5 +73,12 @@ class LoginController extends Controller
         $this->incrementLoginAttempts($request);
         return $this->sendFailedLoginResponse($request);
     }
-
+    protected function authenticated(\Illuminate\Http\Request $request, $user)
+    {
+        $user->update([
+            'last_login_at' => Carbon::now()->toDateTimeString(),
+            'last_login_ip' => $request->getClientIp()
+        ]);
+    }
 }
+

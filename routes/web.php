@@ -18,7 +18,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::get('/', function () {
         return view('pages.home.index');
+       // return view('welcome');
     });
+    
 
     Route::resource('/users', '\App\Http\Controllers\UsersController');
 
@@ -55,6 +57,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('/projects', '\App\Http\Controllers\ProjectController');
 
     Route::resource('/files', '\App\Http\Controllers\FilesController');
+    Route::get('/api/files/get-files-by-status', '\App\Http\Controllers\FilesController@getFilesByStatus');
     
       Route::get('/files/{id}/assign', '\App\Http\Controllers\FilesController@getAssignDocument');
 

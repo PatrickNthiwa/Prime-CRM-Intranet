@@ -12,7 +12,7 @@ class Project extends Model
 
     protected $table="projects";
 
-    protected $fillable=["name","description","type","amount","status","user_id"];
+    protected $fillable=["name","description","type","amount","cost","location","image","status","user_id" ];
 
 
 
